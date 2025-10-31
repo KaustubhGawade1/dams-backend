@@ -116,6 +116,16 @@ import java.time.LocalDateTime;
     private Long size;
     private String filePath;
 
+    public boolean isPublic() {
+        return isPublic;
+    }
+
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
+    }
+
+    private boolean isPublic;
+
 
 }
 

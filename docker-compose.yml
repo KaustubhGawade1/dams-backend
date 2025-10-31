@@ -14,6 +14,7 @@ services:
       - dams-network
 
   backend:
+    build: .
     image: dams-back
     container_name: dams-backend
     ports:

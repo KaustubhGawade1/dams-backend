@@ -10,7 +10,7 @@ import java.util.List;
 public interface assetservice {
 
 
-   //static  asset storeFile(MultipartFile file) throws IOException ;
+    //static  asset storeFile(MultipartFile file) throws IOException ;
 
     List<asset> getAllAsset();
 
@@ -21,4 +21,6 @@ public interface assetservice {
     asset updateAsset(Long id, asset Asset);
 
     String deleteAsset(Long id);
+
+     List<asset> searchAssets(String query);
 }

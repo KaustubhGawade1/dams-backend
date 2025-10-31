@@ -80,6 +80,13 @@ public class AssetController {
         AssetService.deleteAsset(id);
         return new ResponseEntity<>("Asset Deleted Successfully", HttpStatus.OK);
     }
+    @GetMapping("/search")
+    public ResponseEntity<List<asset>> searchAssets(@RequestParam String query) {
+        List<asset> result = AssetService.searchAssets(query);
+        return ResponseEntity.ok(result);
+    }
+
+
 }
 
 

@@ -69,13 +69,16 @@ public class WebSecurityConfig {
                 .cors(cors -> cors.configurationSource(request -> {
                     var config = new org.springframework.web.cors.CorsConfiguration();
                     config.setAllowCredentials(true);
-                    config.setAllowedOriginPatterns(Arrays.asList( "http://localhost:5173",
-                            "https://front-damss.onrender.com"));
+                    config.setAllowedOrigins(Arrays.asList(
+                            "http://localhost:5173",
+                            "https://front-damss.onrender.com"
+                    ));
                     config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept"));
                     config.setExposedHeaders(Arrays.asList("Authorization", "Content-Type"));
                     return config;
                 }))
+
 
 
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))

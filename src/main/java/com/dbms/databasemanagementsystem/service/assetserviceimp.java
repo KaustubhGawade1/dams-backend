@@ -1,6 +1,5 @@
 package com.dbms.databasemanagementsystem.service;
 
-import com.dbms.databasemanagementsystem.Exception.ResourceNotFoundException;
 import com.dbms.databasemanagementsystem.model.Users;
 import com.dbms.databasemanagementsystem.model.asset;
 import com.dbms.databasemanagementsystem.payload.AssetDto;
@@ -13,8 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -37,7 +34,7 @@ public class assetserviceimp implements assetservice {
     private String uploadDir;
 
     @Autowired
-    private AssetRepository assetrepo;
+    public AssetRepository assetrepo;
 @Autowired
     private UserDetailsServiceImpl userDetailsServicee;
 
@@ -121,5 +118,9 @@ private ModelMapper modelMapper;
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Asset not found");
         }
 
+    }
+    @Override
+    public List<asset> searchAssets(String query) {
+        return assetrepo.searchAllFields(query);
     }
 }
